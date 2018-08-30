@@ -333,8 +333,8 @@ client.on('guildCreate', guild => {
      .setColor("RED")
      .setTitle('Click Here To Add Bot .!')
      .setURL('https://discordapp.com/api/oauth2/authorize?client_id=484098782158651392&permissions=8&scope=bot')
-اسم السيرفر: ${guild.name}
-صاحب السيرفر: ${guild.owner}**`);
+Server name: ${guild.name}
+Owner of bot: ${guild.owner}**`);
 client.channels.get("467833183254347797").sendEmbed(embed)
 });
 
@@ -345,8 +345,8 @@ client.on('guildDelete', guild => {
      .setURL('https://discordapp.com/api/oauth2/authorize?client_id=484098782158651392&permissions=8&scope=bot')
   .setDescription(`**
   Server Kicked Zindawrs :cry:
-اسم السيرفر: ${guild.name}
-صاحب السيرفر: ${guild.owner}**`);
+	Server name: ${guild.name}
+Owner of bot: ${guild.owner}**`);
 client.channels.get("467833183254347797").sendEmbed(embed)
 });
  
