@@ -202,8 +202,8 @@ ${prefix}help-music ⇏ اوامر الموسيقى
   
 
 client.on("message", message => {
-	var prefix = "-";
- if (message.content === "-help-public") {
+	var prefix = "$";
+ if (message.content === "$help-public") {
 	 message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
@@ -244,8 +244,8 @@ client.on("message", message => {
    }); 
    
    client.on("message", message => {
-	var prefix = "-";
- if (message.content === "-help-admin") {
+	var prefix = "$";
+ if (message.content === "$help-admin") {
 	  message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
@@ -281,8 +281,8 @@ client.on("message", message => {
    }); 
 
    client.on("message", message => {
-	var prefix = "-";
- if (message.content === "-help-games") {
+	var prefix = "$";
+ if (message.content === "$help-games") {
 	  message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
@@ -307,7 +307,7 @@ client.on("message", message => {
 			  
 client.on("message", message => {
 	var prefix = "$";
- if (message.content === "-help-music") {
+ if (message.content === "-$help-music") {
 	  message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
@@ -2540,20 +2540,30 @@ client.on('message',function(message) {
 
 
 client.on('message', message => {
-    if (message.content === 'Support') {
-        message.reply('https://discord.gg/5kxqJW');
+    if (message.content === '.') {
+        message.reply('♪أطلـَـق من نقط, يلــبى بس ☆');
       }
 });
 
 
 client.on('message', message => {
-    if (message.content === 'inv') {
-        message.reply('https://discordapp.com/api/oauth2/authorize?client_id=484098782158651392&permissions=8&scope=bot%27');
+    if (message.content === 'هاي') {
+        message.reply('♪ هــأايات أطلـَـق ولكــم☆');
       }
 });
 
- 
+ client.on('message', message => {
+    if (message.content === '..') {
+        message.reply('♪أطلـَـق من نقط, يلــبى بس ☆');
+      }
+});
 
+
+client.on('message', message => {
+    if (message.content === '...') {
+        message.reply('♪أطلـَـق من نقط, يلــبى بس ☆');
+      }
+});
 
 
 
