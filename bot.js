@@ -964,7 +964,7 @@ message.channel.send("``لا تستطيع سحب "+ message.mentions.members.fir
 }
 } else {
 message.react("❌")
- }}});
+ });
 
  client.on('message', message => {
               if (!message.channel.guild) return;
@@ -2536,6 +2536,7 @@ client.on('message', message => {
 
 client.login(process.env.BOT_TOKEN);
 
+});
 
 	
 	
