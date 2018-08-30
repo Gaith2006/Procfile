@@ -101,55 +101,7 @@ client.on('message', message => {
 });
 
 
-client.on('message', message => {
-    if (message.author.bot) return;
-     if (message.content === prefix + "help-admin") {
-         if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply(`
-         
-         **لست من المشرفين لن يتم ارسال الرسالة إليك**
-         
-         
-         `);
-         message.channel.send('**Check your DM**');
-            
-    
-         
-
-
- message.author.sendMessage(`
- **
-
-=============================
-       ADMIN S
-=============================
-
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-  $kick <ntion 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-  $clear 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
-  $mute mention 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-  $unmute mention
- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
-  $bc message
- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-  $closero<message
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
-  $openrom<message
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-  $server message
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-  $wran massage
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-  $clear message
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-`);
-
-    }
-});
-
+c
 
 
 client.on('message' , message => {
