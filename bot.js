@@ -30,7 +30,6 @@ client.user.setGame(`Nothing`,"http://twitch.tv/S-F")
 
 
 
-const Discord = require('discord.js');
 const db = require('quick.db');
 const client = new Discord.Client();   
 const giphy = require('giphy-api')();    
