@@ -151,9 +151,6 @@ client.on('message', message => {
 
 
            if (message.content.startsWith(prefix + "id")) {
-           if (message.channel.id !== "ايدي الروم الي تبي فيه الامر") return;
-
-            if(!message.channel.guild) return message.reply(هذا الأمر فقط ل السيرفرات ❌);
 
                 message.guild.fetchInvites().then(invs => {
       let member = client.guilds.get(message.guild.id).members.get(message.author.id);
