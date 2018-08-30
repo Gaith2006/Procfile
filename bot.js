@@ -178,9 +178,9 @@ var mentionned = message.mentions.members.first();
 
     .setColor("#0a0909")
  .setThumbnail(message.author.avatarURL)
-.addField(': تاريخ دخولك للديسكورد',\${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} `\n ${moment(heg.createdTimestamp).fromNow()},true) 
-.addField(': تاريخ دخولك لسيرفرنا',`${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')}  ` \n ${moment(h.joinedAt).fromNow()} , true)
-.addField( :لقد قمت بدعوة , ${inviteCount} `)
+.addField(': Date of join to discord',\${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} `\n ${moment(heg.createdTimestamp).fromNow()},true) 
+.addField(': Date of join to the server',`${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')}  ` \n ${moment(h.joinedAt).fromNow()} , true)
+.addField( :Invite by , ${inviteCount} `)
 
 
 .setFooter(message.author.username, message.author.avatarURL)
