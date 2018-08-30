@@ -151,7 +151,7 @@ channel.guild.owner.send(`<@!${channelremover.id}>
   });
 
 client.on('message', msg => {
-	var prefix = "-";
+	var prefix = "$";
   if (msg.author.bot) return;
   if (!msg.content.startsWith(prefix)) return;
   let command = msg.content.split(" ")[0];
@@ -332,7 +332,7 @@ client.on('guildCreate', guild => {
          const embed = new Discord.RichEmbed()
      .setColor("RED")
      .setTitle('Click Here To Add Bot .!')
-     .setURL('https://discordapp.com/oauth2/authorize?client_id=400489866573512705&permissions=8&scope=bot')
+     .setURL('https://discordapp.com/api/oauth2/authorize?client_id=484098782158651392&permissions=8&scope=bot')
   .setDescription(`**
   New Server Add Zindawrs ✅
 اسم السيرفر: ${guild.name}
