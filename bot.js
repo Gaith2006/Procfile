@@ -919,7 +919,7 @@ client.on('message', message => {
             .addField('``My ID``' , `[ ${client.user.id} ]` , true)
 			      .addField('``My Prefix``' , `[ - ]` , true)
 			      .addField('``My Language``' , `[ Java Script ]` , true)
-			      .setFooter('By | Elmusaui_GK and SpeedMC')
+			      .setFooter('By | ITz1uKY and Zindawrs team')
     })
 }
 });
