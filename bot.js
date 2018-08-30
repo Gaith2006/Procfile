@@ -159,9 +159,8 @@ client.on("guildMemberAdd", member => {
   hours = hours > 9 ? hours : '0' + hours;
   minutes = minutes > 9 ? minutes : '0' + minutes;
   seconds = seconds > 9 ? seconds : '0' + seconds;
-  return ${days > 0 ?${days} Days : ''}${(hours || days) > 0 ?${hours} Hours : ''}${minutes} Mins ${seconds} Secs;
-  }
-
+  return ${days > 0 ?${days} Days : ''}${(hours || days) > 0 ?${hours} Hours : ''}${minutes} Mins ${seconds} Secs;}
+   
   if(message.author.bot) return;
   if(message.channel.type === 'dm') return;
   if(message.content.startsWith(prefix + "bot")) {
