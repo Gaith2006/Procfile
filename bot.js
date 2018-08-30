@@ -333,7 +333,7 @@ client.on('guildCreate', guild => {
      .setColor("RED")
      .setTitle('Click Here To Add Bot .!')
      .setURL('https://discordapp.com/api/oauth2/authorize?client_id=484098782158651392&permissions=8&scope=bot')
-  New Server Add Zindawrs ✅
+  New Server Add Zindawrs 
 اسم السيرفر: ${guild.name}
 صاحب السيرفر: ${guild.owner}**`);
 client.channels.get("467833183254347797").sendEmbed(embed)
