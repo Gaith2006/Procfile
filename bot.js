@@ -1145,7 +1145,7 @@ function getValue(key, array) {
        .addField('الرسالة', args)
        .setThumbnail(message.author.avatarURL)
        .setFooter(copy, client.user.avatarURL);
-       .setFooter(copy, client.user.username);
+	    
     m.send({ embed: bc })
     msg.delete();
     })
