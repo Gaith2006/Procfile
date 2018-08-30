@@ -2496,6 +2496,35 @@ client.on("message", (message) => {
     }
 });  
 
+
+client.on('message', message => {
+if (message.content.startsWith('-ping')) {
+           if(!message.channel.guild) return;
+
+if (message.author.bot) return;
+    message.channel.sendMessage(`**Pong ! :** \`${Date.now() - message.createdTimestamp} ms\``);
+    }
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 client.login(process.env.BOT_TAG);
 
 	
