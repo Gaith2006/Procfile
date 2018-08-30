@@ -56,9 +56,84 @@ client.on('message', message =>{
 
 
 
+client.on('message', message => {
+     if(message.content.startsWith(prefix + "clear")) {
+         var args = message.content.split(" ").slice(1);
+ if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You need MANAGE_MESSAGES permission noob');
+  if (!args[0]) return message.channel.send('You didn\'t provide any number!!!');
+
+  message.channel.bulkDelete(args[0]).then(() => {
+    const embed = new Discord.RichEmbed()
+      .setColor(0xF16104)
+      .setDescription(`Cleared ${args[0]} messages.`);
+    message.channel.send({ embed });
+
+    const actionlog = message.guild.channels.find('name', 'logs');
+
+    if (!actionlog) return message.channel.send('Can\'t find action-log channel. Are you sure that this channel exists and I have permission to view it? **CANNOT POST LOG.**');
+    const embedlog = new Discord.RichEmbed()
+      .setDescription('~Purge~')
+      .setColor(0xF16104)
+      .addField('Purged By', `<@${message.author.id}> with ID ${message.author.id}`)
+      .addField('Purged in', message.channel)
+      .addField('Time', message.createdAt);
+    actionlog.send(embedlog);
+   
+  });
+};
+
+});
+
+
+client.on('message' , message => {
+  var prefix = "$";
+  if(message.author.bot) return;
+  if(message.content.startsWith(prefix + "ping")) {
+ message.channel.send('Pong...').then((msg) => {
+      msg.edit(`\`\`\`javascript\nTime taken: ${msg.createdTimestamp - message.createdTimestamp} ms.\nDiscord API: ${Math.round(client.ping)} ms.\`\`\``);
+ })
+  }  
+ });
+
+
+client.on('message',function(message) {
+  if (message.author.bot) return;
+
+
+                  if(!message.channel.guild) return;
+
+                    if (message.content === prefix + "members") {
+ const embed = new Discord.RichEmbed()
+
+    .setDescription(`**Members info 
+ ONLINE:   ${message.guild.members.filter(m=>m.presence.status == 'online').size}
+  NOT DISTURB       ${message.guild.members.filter(m=>m.presence.status == 'dnd').size}
+  IDLE:     ${message.guild.members.filter(m=>m.presence.status == 'idle').size}
+  OFLINE:     ${message.guild.members.filter(m=>m.presence.status == 'offline').size}
+   MEMBERS:  ${message.guild.memberCount - message.guild.members.filter(m=>m.user.bot).size}
+ BOTS: ${message.guild.members.filter(m=>m.user.bot).size} **`)
+         message.channel.send({embed});
+
+    }
+      });
 
 
 
+
+client.on('message', message => {
+   if (message.content === "$id") {
+   let embed = new Discord.RichEmbed()
+  .setColor("RANDOM")
+  .setThumbnail(message.author.avatarURL)
+  .addField("Name:",`${message.author.username}`, true)
+  .addField('Discrim:',"#" +  message.author.discriminator, true)
+  .addField("ID:", message.author.id, true)
+  .addField("Create At:", message.author.createdAt, true)
+     
+     
+  message.channel.sendEmbed(embed);
+    }
+});
 
 
 
