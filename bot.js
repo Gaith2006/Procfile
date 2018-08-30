@@ -1630,7 +1630,7 @@ client.on('message', message => {
 var AsciiTable = require('ascii-data-table').default
 client.on('message', message =>{
 
-    if(message.content == "-roles"){
+    if(message.content == "$roles"){
         var 
         ros=message.guild.roles.size,
         data = [['Rank', 'RoleName']]
@@ -1662,7 +1662,7 @@ var prefix = "$";
 
 
 client.on('message', message => {
-var prefix = "-";
+var prefix = "$";
       if(message.content === prefix + "schannel") {
       if(!message.channel.guild) return;
       if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply(':x:');
@@ -2017,7 +2017,7 @@ const cuttweet = [     'كت تويت ‏| تخيّل لو أنك سترسم ش�
   var embed = new Discord.RichEmbed()
   .setColor('RANDOM')
    .setThumbnail(message.author.avatarURL) 
- .addField('Speed bot' ,
+ .addField('Zindawrs' ,
   `${cuttweet[Math.floor(Math.random() * cuttweet.length)]}`)
   message.channel.sendEmbed(embed);
   console.log('[id] Send By: ' + message.author.username)
@@ -2273,7 +2273,7 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-    if (message.content.startsWith("-bans")) {
+    if (message.content.startsWith("$bans")) {
         message.guild.fetchBans()
         .then(bans => message.channel.send(`${bans.size} عدد اشخاص المبندة من السيرفر `))
   .catch(console.error);
@@ -2282,19 +2282,19 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-        if (message.content === "-inv") {
+        if (message.content === "$inv") {
             if(!message.channel.guild) return;
         let embed = new Discord.RichEmbed()
         .setAuthor(` ${message.author.username} `, message.author.avatarURL)      
         .setTitle(`:small_orange_diamond: اضغط هنا `)
-        .setURL(`https://discordapp.com/oauth2/authorize?client_id=400489866573512705&permissions=8&scope=bot`)
+        .setURL(`https://discordapp.com/api/oauth2/authorize?client_id=484098782158651392&permissions=8&scope=bot%27`)
         .setThumbnail(" https://cdn.discordapp.com/avatars/377904849783750667/6c76e412f18c142dfd711d05fb363869.png?size=2048")        
      message.channel.sendEmbed(embed);
        }
    });
  
 client.on('message', message => {
-    if (message.content.startsWith("-avatar")) {
+    if (message.content.startsWith("$avatar")) {
 if(!message.channel.guild) return;
         var mentionned = message.mentions.users.first();
     var client;
@@ -2337,7 +2337,7 @@ client.on('message', message => {
      let embed = new Discord.RichEmbed()
   .setAuthor(message.author.username)
   .setColor("#9B59B6")
-  .addField(" ** :gear: Server Support :gear: **" , "  **https://discord.gg/htNpU3J**")
+  .addField(" ** :gear: Server Support :gear: **" , "  **https://discord.gg/5kxqJW**")
      
      
   message.channel.sendEmbed(embed);
@@ -2539,9 +2539,18 @@ client.on('message',function(message) {
       });
 
 
+client.on('message', message => {
+    if (message.content === 'Support') {
+        message.reply('https://discord.gg/5kxqJW');
+      }
+});
 
 
-
+client.on('message', message => {
+    if (message.content === 'inv') {
+        message.reply('https://discordapp.com/api/oauth2/authorize?client_id=484098782158651392&permissions=8&scope=bot%27');
+      }
+});
 
  
 
