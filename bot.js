@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = '$'
+const prefix = '-'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -177,7 +177,7 @@ client.on('message', msg => {
 
 
 client.on("message", message => {
-	var prefix = "$";
+	var prefix = "-";
  if (message.content === "-help") {
   const embed = new Discord.RichEmbed()  
       .setColor("#000000") 
@@ -186,13 +186,13 @@ client.on("message", message => {
 	         Please Chose: 
 
 			 
-${prefix}help-public ⇏ اوامر عامة
+-{prefix}help-public ⇏ اوامر عامة
 
-${prefix}help-admin ⇏ اوامر ادارة السيرفر
+-{prefix}help-admin ⇏ اوامر ادارة السيرفر
 			 
-${prefix}help-games ⇏ اوامر الالعاب
+-{prefix}help-games ⇏ اوامر الالعاب
 
-${prefix}help-music ⇏ اوامر الموسيقى
+-{prefix}help-music ⇏ اوامر الموسيقى
 
 	  `)
    message.channel.sendEmbed(embed)
@@ -202,8 +202,8 @@ ${prefix}help-music ⇏ اوامر الموسيقى
   
 
 client.on("message", message => {
-	var prefix = "$";
- if (message.content === "$help-public") {
+	var prefix = "-";
+ if (message.content === "-help-public") {
 	 message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
@@ -244,8 +244,8 @@ client.on("message", message => {
    }); 
    
    client.on("message", message => {
-	var prefix = "$";
- if (message.content === "$help-admin") {
+	var prefix = "-";
+ if (message.content === "-help-admin") {
 	  message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
@@ -281,8 +281,8 @@ client.on("message", message => {
    }); 
 
    client.on("message", message => {
-	var prefix = "$";
- if (message.content === "$help-games") {
+	var prefix = "-";
+ if (message.content === "-help-games") {
 	  message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
@@ -306,21 +306,21 @@ client.on("message", message => {
    }); 
 			  
 client.on("message", message => {
-	var prefix = "$";
- if (message.content === "-$help-music") {
+	var prefix = "-";
+ if (message.content === "-help-music") {
 	  message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
   const embed = new Discord.RichEmbed() 
       .setColor("#000000")
       .setDescription(`
 	        اوامر الموسيقى 
-❖${prefix}play ~ لتشغيل أغنية برآبط أو بأسم
-❖${prefix}skip ~ لتجآوز الأغنية الحآلية
-❖${prefix}pause ~ إيقآف الأغنية مؤقتا
-❖${prefix}resume ~ لموآصلة الإغنية بعد إيقآفهآ مؤقتا
-❖${prefix}vol ~ لتغيير درجة الصوت 100 - 0
-❖${prefix}stop ~ لإخرآج البوت من الروم
-❖${prefix}np ~ لمعرفة الأغنية المشغلة حآليا
-❖${prefix}queue ~ لمعرفة قآئمة التشغيل
+❖-{prefix}play ~ لتشغيل أغنية برآبط أو بأسم
+❖-{prefix}skip ~ لتجآوز الأغنية الحآلية
+❖-{prefix}pause ~ إيقآف الأغنية مؤقتا
+❖-{prefix}resume ~ لموآصلة الإغنية بعد إيقآفهآ مؤقتا
+❖-{prefix}vol ~ لتغيير درجة الصوت 100 - 0
+❖-{prefix}stop ~ لإخرآج البوت من الروم
+❖-{prefix}np ~ لمعرفة الأغنية المشغلة حآليا
+❖-{prefix}queue ~ لمعرفة قآئمة التشغيل
 
  `)
    message.author.sendEmbed(embed)
@@ -351,7 +351,7 @@ client.on('message', async msg => {
 	const serverQueue = queue.get(msg.guild.id);
 	let command = msg.content.toLowerCase().split(" ")[0];
 	command = command.slice(prefix.length)
-	if (command === `play`) {
+	if (command === `-play`) {
 		const voiceChannel = msg.member.voiceChannel;
 		if (!voiceChannel) return msg.channel.send('يجب توآجد حضرتك بروم صوتي .');
 		const permissions = voiceChannel.permissionsFor(msg.client.user);
@@ -411,30 +411,30 @@ ${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
 
 			return handleVideo(video, msg, voiceChannel);
 		}
-	} else if (command === `skip`) {
+	} else if (command === `-skip`) {
 		if (!msg.member.voiceChannel) return msg.channel.send('أنت لست بروم صوتي .');
 		if (!serverQueue) return msg.channel.send('لا يتوفر مقطع لتجآوزه');
 		serverQueue.connection.dispatcher.end('تم تجآوز هذآ المقطع');
 		return undefined;
-	} else if (command === `stop`) {
+	} else if (command === `-stop`) {
 		if (!msg.member.voiceChannel) return msg.channel.send('أنت لست بروم صوتي .');
 		if (!serverQueue) return msg.channel.send('لا يتوفر مقطع لإيقآفه');
 		serverQueue.songs = [];
 		serverQueue.connection.dispatcher.end('تم إيقآف هذآ المقطع');
 		return undefined;
-	} else if (command === `vol`) {
+	} else if (command === `-vol`) {
 		if (!msg.member.voiceChannel) return msg.channel.send('أنت لست بروم صوتي .');
 		if (!serverQueue) return msg.channel.send('لا يوجد شيء شغآل.');
 		if (!args[1]) return msg.channel.send(`:loud_sound: مستوى الصوت **${serverQueue.volume}**`);
 		serverQueue.volume = args[1];
 		serverQueue.connection.dispatcher.setVolumeLogarithmic(args[1] / 50);
 		return msg.channel.send(`:speaker: تم تغير الصوت الي **${args[1]}**`);
-	} else if (command === `np`) {
+	} else if (command === `-np`) {
 		if (!serverQueue) return msg.channel.send('لا يوجد شيء حالي ف العمل.');
 		const embedNP = new Discord.RichEmbed()
 	.setDescription(`:notes: الان يتم تشغيل : **${serverQueue.songs[0].title}**`)
 		return msg.channel.sendEmbed(embedNP);
-	} else if (command === `queue`) {
+	} else if (command === `-queue`) {
 		
 		if (!serverQueue) return msg.channel.send('لا يوجد شيء حالي ف العمل.');
 		let index = 0;
@@ -445,14 +445,14 @@ ${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
 ${serverQueue.songs.map(song => `**${++index} -** ${song.title}`).join('\n')}
 **الان يتم تشغيل** ${serverQueue.songs[0].title}`)
 		return msg.channel.sendEmbed(embedqu);
-	} else if (command === `pause`) {
+	} else if (command === `-pause`) {
 		if (serverQueue && serverQueue.playing) {
 			serverQueue.playing = false;
 			serverQueue.connection.dispatcher.pause();
 			return msg.channel.send('تم إيقاف الموسيقى مؤقتا!');
 		}
 		return msg.channel.send('لا يوجد شيء حالي ف العمل.');
-	} else if (command === "resume") {
+	} else if (command === "-resume") {
 		if (serverQueue && !serverQueue.playing) {
 			serverQueue.playing = true;
 			serverQueue.connection.dispatcher.resume();
@@ -527,7 +527,7 @@ function play(guild, song) {
 
 	serverQueue.textChannel.send(`بدء تشغيل : **${song.title}**`);
 }
-const adminprefix = "-v";
+const adminprefix = "--";
 const devs = ['349616310734553088','335027415619338240'];
 client.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' ');
@@ -679,7 +679,7 @@ if(ra3d.content.startsWith(prefix + 'ccolors')) {
        });
 
 client.on('message', message => {
-var prefix = "$";
+var prefix = "-";
 var cats = ["http://www.shuuf.com/shof/uploads/2015/09/09/jpg/shof_b9d73150f90a594.jpg","https://haltaalam.info/wp-content/uploads/2015/05/0.208.png","https://haltaalam.info/wp-content/uploads/2015/05/266.png","https://haltaalam.info/wp-content/uploads/2015/05/250.png","https://haltaalam.info/wp-content/uploads/2017/02/0.2517.png","https://pbs.twimg.com/media/CP0mi02UAAA3U2z.png","http://www.shuuf.com/shof/uploads/2015/08/31/jpg/shof_3b74fa7295ec445.jpg","http://www.shuuf.com/shof/uploads/2015/08/22/jpg/shof_fa3be6ab68fb415.jpg","https://pbs.twimg.com/media/CSWPvmRUcAAeZbt.png","https://pbs.twimg.com/media/B18VworIcAIMGsE.png"]
         var args = message.content.split(" ").slice(1);
     if(message.content.startsWith(prefix + 'هل تعلم')) {
@@ -748,7 +748,7 @@ const zead = [
 const Langs = ['afrikaans', 'albanian', 'amharic', 'arabic', 'armenian', 'azerbaijani', 'bangla', 'basque', 'belarusian', 'bengali', 'bosnian', 'bulgarian', 'burmese', 'catalan', 'cebuano', 'chichewa', 'chinese simplified', 'chinese traditional', 'corsican', 'croatian', 'czech', 'danish', 'dutch', 'english', 'esperanto', 'estonian', 'filipino', 'finnish', 'french', 'frisian', 'galician', 'georgian', 'german', 'greek', 'gujarati', 'haitian creole', 'hausa', 'hawaiian', 'hebrew', 'hindi', 'hmong', 'hungarian', 'icelandic', 'igbo', 'indonesian', 'irish', 'italian', 'japanese', 'javanese', 'kannada', 'kazakh', 'khmer', 'korean', 'kurdish (kurmanji)', 'kyrgyz', 'lao', 'latin', 'latvian', 'lithuanian', 'luxembourgish', 'macedonian', 'malagasy', 'malay', 'malayalam', 'maltese', 'maori', 'marathi', 'mongolian', 'myanmar (burmese)', 'nepali', 'norwegian', 'nyanja', 'pashto', 'persian', 'polish', 'portugese', 'punjabi', 'romanian', 'russian', 'samoan', 'scottish gaelic', 'serbian', 'sesotho', 'shona', 'sindhi', 'sinhala', 'slovak', 'slovenian', 'somali', 'spanish', 'sundanese', 'swahili', 'swedish', 'tajik', 'tamil', 'telugu', 'thai', 'turkish', 'ukrainian', 'urdu', 'uzbek', 'vietnamese', 'welsh', 'xhosa', 'yiddish', 'yoruba', 'zulu'];
 
 client.on('message', message => {
-	var prefix = "$";
+	var prefix = "-";
 if (message.content.startsWith(prefix + 'trans')) {
     let args = message.content.split(" ").slice(1);
     if (!args[0]) {
@@ -815,7 +815,7 @@ message.channel.send(embed)
 
 
 client.on("message", function(message) {
-	var prefix = "$";
+	var prefix = "-";
    if(message.content.startsWith(prefix + "rps")) {
     let messageArgs = message.content.split(" ").slice(1).join(" ");
     let messageRPS = message.content.split(" ").slice(2).join(" ");
@@ -856,7 +856,7 @@ reaction3.on("collect", r => {
 });
 
  client.on('message', message => {
-	 var prefix ="$";
+	 var prefix ="-";
  if(message.content.startsWith(prefix +"server")){
 if(!message.channel.guild) return message.reply(' ');
 const millis = new Date().getTime() - message.guild.createdAt.getTime();
@@ -880,7 +880,7 @@ message.channel.sendEmbed(embed)
 }
 });
 client.on('message', message => {
-    if (message.content.startsWith("$bot")) {
+    if (message.content.startsWith("-bot")) {
     message.channel.send({
         embed: new Discord.RichEmbed()
             .setAuthor(client.user.username,client.user.avatarURL)
@@ -904,7 +904,7 @@ client.on('message', message => {
 });
 
 client.on("message", message => {
-    var prefix = "$"
+    var prefix = "-"
     if (!message.content.startsWith(prefix)) return;
       let command = message.content.split(" ")[0];
       command = command.slice(prefix.length);
@@ -935,7 +935,7 @@ let welcomer = member.guild.channels.find("name","welcome");
 
 
 client.on('message', message => {
-	var prefix = "$";
+	var prefix = "-";
 if(!message.channel.guild) return;
 if(message.content.startsWith(prefix + 'move')) {
  if (message.member.hasPermission("MOVE_MEMBERS")) {
@@ -982,7 +982,7 @@ message.react("❌")
 
  client.on("message", async message => {
             if(!message.channel.guild) return;
-            var prefix = "$";
+            var prefix = "-";
         if(message.content.startsWith(prefix + 'invites')) {
         var nul = 0
         var guild = message.guild
@@ -1041,7 +1041,7 @@ return;
 });
 
 client.on('message', msg => {
-	var  prefix = "$";
+	var  prefix = "-";
  if (msg.content.startsWith(prefix + 'cal')) {
     let args = msg.content.split(" ").slice(1);
         const question = args.join(' ');
@@ -1063,7 +1063,7 @@ client.on('message', msg => {
 });
 
 client.on('message', message => { 
-	var prefix = "$";
+	var prefix = "-";
  let args = message.content.split(' ').slice(1);
     if(message.content.startsWith(prefix + 'short')) {
     if(!message.channel.guild) return;  
@@ -1080,7 +1080,7 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-	var prefix = "$";
+	var prefix = "-";
 if (message.content.startsWith(prefix + 'tag')) {
     let args = message.content.split(" ").slice(1);
 if(!args[0]) return message.reply('مرجو كتابة نص الدي تريد');  
@@ -1092,7 +1092,7 @@ if(!args[0]) return message.reply('مرجو كتابة نص الدي تريد');
 });
 
 client.on('message', message => {
-	var prefix ="$";
+	var prefix ="-";
  let args = message.content.split(' ').slice(1);
     if(message.content.startsWith(prefix + 'google')) {
     const input = args.join(' ');
@@ -1114,7 +1114,7 @@ function getValue(key, array) {
 }
 
  client.on('message', message => {
-	    var prefix = "$";
+	    var prefix = "-";
               if(!message.channel.guild) return;
     if(message.content.startsWith(prefix + 'bc')) {
     if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
@@ -1145,6 +1145,7 @@ function getValue(key, array) {
        .addField('الرسالة', args)
        .setThumbnail(message.author.avatarURL)
        .setFooter(copy, client.user.avatarURL);
+       .setFooter(copy, client.user.username);
     m.send({ embed: bc })
     msg.delete();
     })
@@ -1511,7 +1512,7 @@ msg.channel.send(embed).then(() => {
 
 client.on('ready', function(){	
     var ms = 40000 ;	
-    var setGame = ['$inv','$help'];	
+    var setGame = ['-inv','-help'];	
     var i = -1;	
     var j = 0;	
     setInterval(function (){	
@@ -1529,7 +1530,7 @@ j = 1;
 
 
 client.on('message', message => {
-  var prefix ="$"; 
+  var prefix ="-"; 
 if (message.content.startsWith(prefix + 'perms')) {
          if(!message.channel.guild) return;
          var perms = JSON.stringify(message.channel.permissionsFor(message.author).serialize(), null, 4);
@@ -1544,7 +1545,7 @@ if (message.content.startsWith(prefix + 'perms')) {
 
 
  client.on('message', message => {
-	 var prefix = "$";
+	 var prefix = "-";
   if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) return;
 
@@ -1564,7 +1565,7 @@ if (command == "za5") {
 });
 
 client.on("message", message => {
-	var prefix = "$";
+	var prefix = "-";
 	var args = message.content.split(' ').slice(1); 
 	var msg = message.content.toLowerCase();
 	if( !message.guild ) return;
@@ -1630,7 +1631,7 @@ client.on('message', message => {
 var AsciiTable = require('ascii-data-table').default
 client.on('message', message =>{
 
-    if(message.content == "$roles"){
+    if(message.content == "-roles"){
         var 
         ros=message.guild.roles.size,
         data = [['Rank', 'RoleName']]
@@ -1662,7 +1663,7 @@ var prefix = "$";
 
 
 client.on('message', message => {
-var prefix = "$";
+var prefix = "-";
       if(message.content === prefix + "schannel") {
       if(!message.channel.guild) return;
       if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply(':x:');
@@ -1703,7 +1704,7 @@ client.on('message', message => {
 });
 
 client.on('message', message => { 
-let prefix = '$'
+let prefix = '-'
     if (message.content.startsWith(prefix + 'emojilist')) {
 
         const List = message.guild.emojis.map(e => e.toString()).join(" ");
@@ -1719,7 +1720,7 @@ let prefix = '$'
 });
 
 client.on('message',function(message) {
-	let prefix = "$";
+	let prefix = "-";
 let args = message.content.split(" ").slice(1).join(" ");
 if(message.content.startsWith(prefix + "say")) {
 if(!args) return;
@@ -1731,7 +1732,7 @@ message.channel.send(`**# ${args}**`); // محطوط # عشان محد يستخ�
 
 client.on('message', async message =>{
   if (message.author.boss) return;
-	var prefix = "$";
+	var prefix = "-";
 
 if (!message.content.startsWith(prefix)) return;
 	let command = message.content.split(" ")[0];
@@ -1798,7 +1799,7 @@ client.on('guildCreate', guild => {
 });
 
     client.on('message', message => {
-var prefix = "$";
+var prefix = "-";
 var cats = ["http://palestine-kitchen.ps/wp-content/uploads/2017/12/%D9%86%D9%83%D8%AA-%D8%AF%D8%A8%D8%A7%D9%86%D8%A9.png","http://www.i7lm.com/wp-content/uploads/2017/04/136769797816.jpg","https://4.bp.blogspot.com/-p62zmDIDXmI/WKzqNt9smaI/AAAAAAAAC4Q/sW_bSIB8OaQhwOYFeplc3uzz8PBN7l3YACEw/s1600/13602501135.jpg","https://www.universemagic.com/images/2016/03/7938-2-or-1457539273.jpg","https://1.bp.blogspot.com/-yFk-FzHSyE8/WR9fmPcsCUI/AAAAAAAAE6c/AmvjLadOiLY9GiCqMLHgA121bY2RS_dCwCLcB/s1600/%25D9%2586%25D9%2583%25D8%25AA%2B%25D9%2585%25D8%25B6%25D8%25AD%25D9%2583%25D8%25A9%2B1.jpg","https://l7zaat.com/wp-content/uploads/2018/02/423.jpg","https://www.petfinder.com/wp-content/uploads/2012/11/101438745-cat-conjunctivitis-causes.jpg","https://i.fatafeat.com/storage/attachments/15/image3_698123_large.jpg","http://www.shuuf.com/shof/uploads/2018/02/08/jpg/shof_97d686082bdb0a2.jpg"];
         var args = message.content.split(" ").slice(1);
     if(message.content.startsWith(prefix + 'نكت')) {
@@ -1845,7 +1846,7 @@ var fkk =[
 
 
    client.on("message", async message => {
-	   var prefix = "$";
+	   var prefix = "-";
     if(message.content == prefix+"فكك"){
         if(UserBlocked.has(message.guild.id)) return message.channel.send("هناك جلسة .")
         UserBlocked.add(message.guild.id)
@@ -1888,7 +1889,7 @@ var fkk =[
 
 
    client.on("message", async message => {
-var prefix = "$";
+var prefix = "-";
 var aoasm =[
     {q:"ما عاصمة **المغرب**",a:"الرباط"},
     {q:"ما عاصمة **افغانستان**",a:"كبل"},
@@ -1990,7 +1991,7 @@ var aoasm =[
 });
 
 client.on("message", message => {
-    const prefix = "$"
+    const prefix = "-"
               
           if(!message.channel.guild) return;
    if(message.author.bot) return;
@@ -2026,7 +2027,7 @@ const cuttweet = [     'كت تويت ‏| تخيّل لو أنك سترسم ش�
 
    client.on('message',function(message) {
   if (message.author.bot) return;
-var prefix = "$";
+var prefix = "-";
                   if(!message.channel.guild) return;
 
                     if (message.content === prefix + "members") {
@@ -2056,7 +2057,7 @@ var al7arthyCodes2 = ["📙__60%__  **|**  📘__40%__","📙__63%__  **|**  �
 client.on('message', message => {
     if(!message.guild) return;
     if (message.author.bot) return;
-      let id = message.author.id,prefix="-";//البريفكس
+      let id = message.author.id,prefix="-";//البرفكس
       if (ti[id] && (new Date).getTime() - ti[id] < 20*1000) {
           let r = (new Date).getTime() - ti[id];
           r = 20*1000 - r;
@@ -2104,7 +2105,7 @@ message.channel.sendEmbed(Embed).then(msg => {
 
 
 client.on('message' , message => {
-var prefix = "$"
+var prefix = "-"
 
 if (message.author.bot) return;
 if (message.content.startsWith(prefix + "contact")) {
@@ -2128,7 +2129,7 @@ let embed = new Discord.RichEmbed()
      .setAuthor(message.author.username, message.author.avatarURL)
      .setDescription(':mailbox_with_mail: تم ارسال الرسالة الى صاحب البوت بنجاح')
      .setThumbnail(message.author.avatarURL)
-     .setFooter("By : Elmusaui_GK and SpeedMC")
+     .setFooter("By : ITz1uKY and zindawrs team")
                                                 
 
 message.channel.send(embed);
@@ -2139,7 +2140,7 @@ message.channel.send(embed);
 });
 
 client.on('message', message => {
-	var prefix = "$"
+	var prefix = "-"
   if (message.author.x5bz) return;
   if (!message.content.startsWith(prefix)) return;
 
@@ -2178,7 +2179,7 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-	var prefix = "$"
+	var prefix = "-"
   if (message.author.x5bz) return;
   if (!message.content.startsWith(prefix)) return;
 
@@ -2215,7 +2216,7 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-var prefix = "$";
+var prefix = "-";
        if(message.content === prefix + "mutechannel") {
                            if(!message.channel.guild) return message.reply('** This command only for servers**');
 
@@ -2242,7 +2243,7 @@ var prefix = "$";
        
 });
 client.on('message', message => { 
-	var prefix ="$";
+	var prefix ="-";
            if (message.content.startsWith(prefix + "id")) {
      var args = message.content.split(" ").slice(1);
      let user = message.mentions.users.first();
@@ -2273,7 +2274,7 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-    if (message.content.startsWith("$bans")) {
+    if (message.content.startsWith("-bans")) {
         message.guild.fetchBans()
         .then(bans => message.channel.send(`${bans.size} عدد اشخاص المبندة من السيرفر `))
   .catch(console.error);
@@ -2282,7 +2283,7 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-        if (message.content === "$inv") {
+        if (message.content === "-inv") {
             if(!message.channel.guild) return;
         let embed = new Discord.RichEmbed()
         .setAuthor(` ${message.author.username} `, message.author.avatarURL)      
@@ -2294,7 +2295,7 @@ client.on('message', message => {
    });
  
 client.on('message', message => {
-    if (message.content.startsWith("$avatar")) {
+    if (message.content.startsWith("-avatar")) {
 if(!message.channel.guild) return;
         var mentionned = message.mentions.users.first();
     var client;
@@ -2311,7 +2312,7 @@ if(!message.channel.guild) return;
 });
 
 client.on('message', message => {
-            var prefix = "$";
+            var prefix = "-";
     if (message.author.bot) return;
     if (!message.content.startsWith(prefix)) return;
 
@@ -2333,7 +2334,7 @@ client.on('message', message => {
 
 
    client.on('message', message => {
-     if (message.content === "$support") {
+     if (message.content === "-support") {
      let embed = new Discord.RichEmbed()
   .setAuthor(message.author.username)
   .setColor("#9B59B6")
@@ -2344,7 +2345,7 @@ client.on('message', message => {
     }
 });
 client.on('message', omar => {
-var prefix = "$";
+var prefix = "-";
 if(omar.content.split(' ')[0] == prefix + 'dc') {  // delete all channels
 if (!omar.channel.guild) return;
 if(!omar.guild.member(omar.author).hasPermission("MANAGE_CHANNELS")) return omar.reply("**You Don't Have ` MANAGE_CHANNELS ` Permission**");
@@ -2365,7 +2366,7 @@ omar.reply("`تم حذف جميع الرتب بنجاح`")
 });
 
 client.on('message', message => {
-	var prefix = "-$";
+	var prefix = "-";
    if(!message.channel.guild) return;
 if(message.content.startsWith(prefix + 'clear')) {
 if(!message.channel.guild) return message.channel.send('**This Command is Just For Servers**').then(m => m.delete(5000));
@@ -2485,7 +2486,7 @@ client.on('message', message => {
 
 
 client.on('message' , message => {
-  var prefix = "$";
+  var prefix = "-";
   if(message.author.bot) return;
   if(message.content.startsWith(prefix + "ping")) {
  message.channel.send('Pong...').then((msg) => {
@@ -2499,22 +2500,7 @@ client.on('message',function(message) {
   if (message.author.bot) return;
 
 
-                  if(!message.channel.guild) return;
-
-                    if (message.content === prefix + "members") {
- const embed = new Discord.RichEmbed()
-
-    .setDescription(`**Members info 
- ONLINE:   ${message.guild.members.filter(m=>m.presence.status == 'online').size}
-  NOT DISTURB       ${message.guild.members.filter(m=>m.presence.status == 'dnd').size}
-  IDLE:     ${message.guild.members.filter(m=>m.presence.status == 'idle').size}
-  OFLINE:     ${message.guild.members.filter(m=>m.presence.status == 'offline').size}
-   MEMBERS:  ${message.guild.memberCount - message.guild.members.filter(m=>m.user.bot).size}
- BOTS: ${message.guild.members.filter(m=>m.user.bot).size} **`)
-         message.channel.send({embed});
-
-    }
-      });
+ 
 
 
 client.on('message', message => {
