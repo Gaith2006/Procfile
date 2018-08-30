@@ -31,7 +31,6 @@ client.user.setGame(`Nothing`,"http://twitch.tv/S-F")
 
 
 const db = require('quick.db');
-const client = new Discord.Client();   
 const giphy = require('giphy-api')();    
 const googl = require('goo.gl');  
 const translate = require('google-translate-api');   
