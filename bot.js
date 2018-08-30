@@ -147,52 +147,58 @@ client.on("guildMemberAdd", member => {
 
 
 
+client.on('message', message => {
 
 
- hero.on('message',async message => {
-  function timeCon(time) {
-  let days = Math.floor(time % 31536000 / 86400);
-  let hours = Math.floor(time % 31536000 % 86400 / 3600);
-  let minutes = Math.floor(time % 31536000 % 86400 % 3600 / 60);
-  let seconds = Math.round(time % 31536000 % 86400 % 3600 % 60);
-  days = days > 9 ? days : '0' + days;
-  hours = hours > 9 ? hours : '0' + hours;
-  minutes = minutes > 9 ? minutes : '0' + minutes;
-  seconds = seconds > 9 ? seconds : '0' + seconds;
-  return ${days > 0 ?${days} Days : ''}${(hours || days) > 0 ?${hours} Hours : ''}${minutes} Mins ${seconds} Secs;}
-   
-  if(message.author.bot) return;
-  if(message.channel.type === 'dm') return;
-  if(message.content.startsWith(prefix + "bot")) {
-    let ramUsage = (process.memoryUsage().rss / 1048576).toFixed();
-    let upTime = timeCon(process.uptime());
-    let createdAt = moment(hero.user.createdAt).fromNow();
+           if (message.content.startsWith(prefix + "id")) {
+           if (message.channel.id !== "ايدي الروم الي تبي فيه الامر") return;
 
-let m = await message.channel.send(\``asciidoc\n= Normal Information =
-Creator :: ${hero.users.get("323885452207587329").username} - ${createdAt}
-Ping :: ${hero.pings[0]} ms
-UpTime :: ${upTime}
+            if(!message.channel.guild) return message.reply(هذا الأمر فقط ل السيرفرات ❌);
 
-= Servers Information =
-Servers :: ${hero.guilds.size}
-Users :: ${hero.users.size}
-Channels :: ${hero.channels.size}
+                message.guild.fetchInvites().then(invs => {
+      let member = client.guilds.get(message.guild.id).members.get(message.author.id);
+      let personalInvites = invs.filter(i => i.inviter.id === message.author.id);
+      let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0);
+      var moment = require('moment');
+      var args = message.content.split(" ").slice(1);
+let user = message.mentions.users.first();
+var men = message.mentions.users.first();
+ var heg;
+ if(men) {
+     heg = men
+ } else {
+     heg = message.author
+ }
+var mentionned = message.mentions.members.first();
+  var h;
+ if(mentionned) {
+     h = mentionned
+ } else {
+     h = message.member
+ }
+        moment.locale('ar-TN');
+      var id = new  Discord.RichEmbed()
 
-= Developer Information =
-NodeJS :: ${process.version}
-DiscordJS :: ${Discord.version}
-Arch :: ${process.arch}
-Platform :: ${process.platform}
+    .setColor("#0a0909")
+ .setThumbnail(message.author.avatarURL)
+.addField(': تاريخ دخولك للديسكورد',\${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} `\n ${moment(heg.createdTimestamp).fromNow()},true) 
+.addField(': تاريخ دخولك لسيرفرنا',`${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')}  ` \n ${moment(h.joinedAt).fromNow()} , true)
+.addField( :لقد قمت بدعوة , ${inviteCount} `)
 
-= Host Information =
-UsedHeap :: ${Math.round(process.memoryUsage().heapUsed / 1024 / 1024 * 100) / 100} MB
-Heap :: ${Math.round(process.memoryUsage().heapTotal / 1024 / 1024 * 100) / 100} MB
-Ram :: ${ramUsage} MB
-Rss :: ${Math.round(process.memoryUsage().rss / 1024 / 1024 * 100) / 100} MB
-````);
-  }
-});
 
+.setFooter(message.author.username, message.author.avatarURL)
+    message.channel.sendEmbed(id);
+})
+}
+
+
+
+     });
+
+
+
+
+ 
 
 
 
