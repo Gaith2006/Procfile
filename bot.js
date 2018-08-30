@@ -329,19 +329,6 @@ client.on("message", message => {
    }); 
 
 
-client.on('guildDelete', guild => {
-         const embed = new Discord.RichEmbed()
-     .setColor("GOLD")
-     .setTitle('Click Here To Add Bot .!')
-     .setURL('https://discordapp.com/api/oauth2/authorize?client_id=484098782158651392&permissions=8&scope=bot')
-  .setDescription(`**
-  Server Kicked Zindawrs :cry:
-	Server name: ${guild.name}
-Owner of bot: ${guild.owner}**`);
-client.channels.get("467833183254347797").sendEmbed(embed)
-});
- 
-
 client.on('message', message => {
             if(!message.channel.guild) return;
 let args = message.content.split(' ').slice(1).join(' ');
@@ -907,9 +894,12 @@ client.on('message', message => {
             .addField('``Users``' ,`[ ${client.users.size} ]` , true)
             .addField('``My Name``' , `[ ${client.user.tag} ]` , true)
             .addField('``My ID``' , `[ ${client.user.id} ]` , true)
-			      .addField('``My Prefix``' , `[ - ]` , true)
+	    
+			      .addField('``My Prefix``' , `[ $ ]` , true)
 			      .addField('``My Language``' , `[ Java Script ]` , true)
 			      .setFooter('By | ITz1uKY and Zindawrs team')
+	    addField('``My Support``' , `[ ${client.say.https://discord.gg/5kxqJW} ]` , true)
+	                .addField('``Invite me``' , `[ ${client.say.https://discordapp.com/api/oauth2/authorize?client_id=484098782158651392&permissions=8&scope=bot%27 ]` , true)
     })
 }
 });
