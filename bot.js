@@ -328,15 +328,6 @@ client.on("message", message => {
    }
    }); 
 
-client.on('guildCreate', guild => {
-         const embed = new Discord.RichEmbed()
-     .setColor("RED")
-     .setTitle('Click Here To Add Bot .!')
-     .setURL('https://discordapp.com/api/oauth2/authorize?client_id=484098782158651392&permissions=8&scope=bot')
-Servername: ${guild.name}
-Ownerofbot: ${guild.owner}**`);
-client.channels.get("467833183254347797").sendEmbed(embed)
-});
 
 client.on('guildDelete', guild => {
          const embed = new Discord.RichEmbed()
