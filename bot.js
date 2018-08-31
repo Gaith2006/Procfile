@@ -2514,7 +2514,7 @@ if (message.author.bot) return;
  client.on('message', message => {
           
 
-           if (message.content.startsWith(prefix + "User")) {
+           if (message.content.startsWith(- + "User")) {
             
             if(!message.channel.guild) return message.reply(`هذا الأمر فقط ل السيرفرات ❌`);
 
