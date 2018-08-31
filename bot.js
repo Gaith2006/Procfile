@@ -2540,7 +2540,7 @@ var mentionned = message.mentions.members.first();
      h = message.member
  }
         moment.locale('ar-TN');
-      var user = new  Discord.RichEmbed()
+      var id = new  Discord.RichEmbed()
        
     .setColor("#0a0909")
  .setThumbnail(message.author.avatarURL)
